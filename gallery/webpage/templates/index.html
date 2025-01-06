@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 d-md-block bg-dark sidebar">
+                <div class="position-sticky pt-3">
+                    <div class="mb-4">
+                        <form method="GET" action="{% url 'index' %}">
+                            <div class="mb-3">
+                                <form method="get">
+                                    {{ filter.form.as_p }}
+                                    <button type="submit" class="btn btn-primary">Search</button>
+                                </form>
+                                
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Popular Tags Section -->
+                    <div>
+                        <h5>Popular Tags</h5>
+                        <div class="tags-cloud">
+                            {% for tag in tags %}
+                                <span class="badge bg-secondary me-1 mb-1">
+                                    <a href="{% url 'index' %}?search={{ tag.name }}" style="text-decoration: none;">{{ tag.name }} ({{ tag.count }})</a>
+                                </span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-9 col-lg-10">
+                <div class="content">
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        {% if projects %}
+                            {% for project in projects %}
+                                <div class="col">
+                                    <div class="project card h-100">
+                                        <a href="{% url 'project' project.project.id %}"><img src="{{ project.project.thumbnail }}" class="card-img-top" alt="{{ project.project.title }}" width="320" height="180"></a>
+                                        <div class="card-body"> 
+                                            <a class="font-weight-bold card-title" href="{% url 'project' project.project.id %}">{{ project.project.title }}</a>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="d-flex justify-content-center align-items-center">
+                                <h1>No projects found.</h1>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4 text-center">
+        {% if page_obj.has_previous %}
+            <a href="{% querystring page=page_obj.previous_page_number %}">« Previous page</a>
+    
+            {% if page_obj.number > 3 %}
+                <a href="{% querystring page=1 %}">1</a>
+                {% if page_obj.number > 4 %}
+                    <span>...</span>
+                {% endif %}
+            {% endif %}
+        {% endif %}
+    
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+                <a href="{% querystring page=num %}">{{ num }}</a>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                <a href="{% querystring page=num %}">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+    
+        {% if page_obj.has_next %}
+            {% if page_obj.number < page_obj.paginator.num_pages|add:'-3' %}
+                <span>...</span>
+                <a href="{% querystring page=page_obj.paginator.num_pages %}">{{ page_obj.paginator.num_pages }}</a>
+            {% elif page_obj.number < page_obj.paginator.num_pages|add:'-2' %}
+                <a href="{% querystring page=page_obj.paginator.num_pages %}">{{ page_obj.paginator.num_pages }}</a>
+            {% endif %}
+    
+            <a href="{% querystring page=page_obj.next_page_number %}">Next Page »</a>
+        {% endif %}
+    </div>
+{% endblock %}
