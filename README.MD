@@ -1,7 +1,13 @@
 # Gallery Project
 #### Video Demo:  <URL HERE>
 
-This is a Django-based web application for managing and displaying a gallery of projects. Each project can have multiple tags associated with it, and the tags are used to categorize and filter the projects. Not a comprehensive gallery of all my projects, since the ones shown in the cs50 gallery of final projects are "some of the past few years’ final projects, randomly ordered!".
+This is a Django-based web application for managing and displaying CS50's gallery of final projects. Each project can have multiple tags associated with it, and the tags are used to categorize and filter the projects.
+## Table of Contents
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+
 
 ## Features
 
