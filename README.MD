@@ -1,5 +1,4 @@
 # Gallery Project
-#### Video Demo:  <https://youtu.be/K0zoEQ77zzY>
 
 ![Home page](image.png)
 
