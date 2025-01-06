@@ -1,5 +1,5 @@
 # Gallery Project
-#### Video Demo:  <URL HERE>
+#### Video Demo:  <https://youtu.be/K0zoEQ77zzY>
 
 ![Home page](image.png)
 
@@ -64,7 +64,7 @@ This is a Django-based web application for managing and displaying CS50's galler
 ## Project Structure
 
 - `gallery/`: The main Django project directory.
-- [webpage/](http://_vscodecontentref_/0): The Django app containing the models, views, templates, and management commands.
+- `webpage/`: The Django app containing the models, views, templates, and management commands.
 - `templates/`: The directory containing HTML templates for the project.
 - `static/`: The directory containing static files (CSS, JavaScript, images).
 
