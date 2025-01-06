@@ -22,7 +22,7 @@ This is a Django-based web application for managing and displaying CS50's galler
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/gallery.git
+    git clone https://github.com/juancarjr/gallery.git
     cd gallery
     ```
 
